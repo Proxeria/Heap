@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <climits>
+#include <fstream>
 
 using namespace std;
 
@@ -144,6 +145,24 @@ void swap(int *x, int *y)
 // Driver program to test above functions
 int main()
 {
+  ifstream fileInput("input.txt");
+  
+  string input;
+  cout << "Commands (Case Sensitive):" << endl;
+  cout << "Line: enter a list of numbers in the input line" << endl;
+  cout << "File: will use the list of names provided on the .txt file included" << endl;
+  cin >> input;
+
+  if (input == "Line") {
+    
+  }
+  else if (input == "File") {
+    
+  }
+
+
+  
+  /*
     MinHeap h(11);
     h.insertKey(3);
     h.insertKey(2);
@@ -155,6 +174,7 @@ int main()
     cout << h.extractMin() << " ";
     cout << h.getMin() << " ";
     h.decreaseKey(2, 1);
-    cout << h.getMin();
+    cout << h.getMin() << endl;
     return 0;
+  */
 }
