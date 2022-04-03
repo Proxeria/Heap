@@ -149,6 +149,7 @@ int main()
   
   string input;
   int inputNum;
+  vector<int> inputVect;
   cout << "Commands (Case Sensitive):" << endl;
   cout << "Line: enter a list of numbers in the input line" << endl;
   cout << "File: will use the list of names provided on the .txt file included" << endl;
@@ -157,6 +158,7 @@ int main()
   if (input == "Line") {
     cout << "Input a number 1-1000:" << endl;
     cin >> inputNum;
+    inputVect.push_back(inputNum);
     
   }
   else if (input == "File") {
