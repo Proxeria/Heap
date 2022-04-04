@@ -2,6 +2,7 @@
 #include <vector>
 #include <climits>
 #include <fstream>
+#include "input.txt"
 
 using namespace std;
 
@@ -146,7 +147,8 @@ void swap(int *x, int *y)
 int main()
 {
   ifstream fileInput("input.txt");
-  
+
+  string line;
   string input;
   int inputNum;
   vector<int> inputVect;
@@ -155,16 +157,25 @@ int main()
   cout << "File: will use the list of names provided on the .txt file included" << endl;
   cin >> input;
 
+  MinHeap h(100);
   if (input == "Line") {
-    cout << "Input a number 1-1000:" << endl;
-    cin >> inputNum;
-    inputVect.push_back(inputNum);
-    
+    while (true) {
+      int tempIn
+      cout << "Input a number 1-1000:" << endl;
+      cout << "Input -1 if you want to quit" << endl;
+      cin >> atoi(inputNum);
+      if (inputNum == -1) {
+	break;
+      }
+      h.insertKey(inputNum);
+    }
   }
   else if (input == "File") {
-    
+    while (std::getline(fileInput, stoi(line))) {
+      h.insertKey(line);
+    }
   }
-
+  
 
   
   /*
