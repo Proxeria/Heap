@@ -2,7 +2,6 @@
 #include <vector>
 #include <climits>
 #include <fstream>
-#include "input.txt"
 
 using namespace std;
 
@@ -150,6 +149,7 @@ int main()
 
   string line;
   string input;
+  string tempStr;
   int inputNum;
   vector<int> inputVect;
   cout << "Commands (Case Sensitive):" << endl;
@@ -160,10 +160,11 @@ int main()
   MinHeap h(100);
   if (input == "Line") {
     while (true) {
-      int tempIn
+      int tempIn;
       cout << "Input a number 1-1000:" << endl;
       cout << "Input -1 if you want to quit" << endl;
-      cin >> atoi(inputNum);
+      cin >> tempStr;
+      inputNum = atoi(tempStr.c_str());
       if (inputNum == -1) {
 	break;
       }
@@ -171,11 +172,13 @@ int main()
     }
   }
   else if (input == "File") {
-    while (std::getline(fileInput, stoi(line))) {
-      h.insertKey(line);
+    while (std::getline(fileInput, line)) {
+      inputNum = atoi(line.c_str());
+      h.insertKey(inputNum);
     }
   }
-  
+
+  cout << h.getMin() << endl;
 
   
   /*
