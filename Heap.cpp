@@ -122,21 +122,14 @@ int main() {
       thisHeap.insert(tempInt);
       cout << endl << "Size of array: " << thisHeap.getCount() << endl;
     }
-   
-  
-    while (thisHeap.getCount() > 0) {
-      cout << thisHeap.rmMax() << endl;
-    }
   }
-  /*
+  
   else if (input == "File") {
     while (std::getline(fileInput, line)) {
-      numLines++;
-    }
-    for (i = 0; i <= numLines; i++) {
-      
+      thisHeap.insert(std::atoi(line.c_str()));
     }
   }
-
-  */
+  while (thisHeap.getCount() > 0) {
+    cout << thisHeap.rmMax() << endl;
+  }
 }
