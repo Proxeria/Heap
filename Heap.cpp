@@ -12,10 +12,20 @@ public:
   int rmMax(void);
   int getMax(void);
   int getCount(void);
+  void siftDown(int, int);
 private:
   int arrVol = 0;
   int intArray[100];
   void heapify(void);
+  int iParent(int i) {
+    return((i-1) / 2);
+  }
+  int iLeftChild(int i) {
+    return(2*i + 1);
+  }
+  int iRightChild(int i) {
+    return(2*i + 2);
+  }
 };
 
 int Heap::getCount() {
@@ -28,7 +38,12 @@ int Heap::getMax() {
 }
 
 void Heap::heapify() {
-  return;
+  int start = arrVol - 1;
+
+  while (start >= 0) {
+    siftDown(start, arrVol - 1);
+    start--;
+  }
 }
 
 void Heap::insert(int inInt) {
@@ -50,34 +65,34 @@ int Heap::rmMax() {
   return tempInt;
 }
 
+void Heap::siftDown(int start, int end) {
+  int root = start;
+  int child;
+  int swap;
+  int tempInt;
+
+  while (iLeftChild(root) <= end) {
+    child = iLeftChild(root);
+    swap = root;
+    if (intArray[swap] < intArray[child]) {
+      swap = child;
+    }
+    if ((child + 1 <= end) && (intArray[swap] < intArray[child + 1])) {
+      swap = child + 1;
+    }
+    if (swap == root) {
+      return;
+    }
+    else {
+      tempInt = intArray[root];
+      intArray[root] = intArray[swap];
+      intArray[swap] = tempInt;
+      root = swap;
+    }
+  }
+}
 
 
-void max_heap(int *a, int m, int numofNum) {
-  int j, t;
-   t = a[m];
-   j = 2 * m;
-   while (j <= numofNum) {
-     if (j < numofNum && a[j+1] > a[j]) {
-       j = j + 1;
-     }
-      if (t > a[j]) {
-	break;
-      }
-      else if (t <= a[j]) {
-         a[j / 2] = a[j];
-         j = 2 * j;
-      }
-   }
-   a[j/2] = t;
-   return;
-}
-  
-void build_maxheap(int *a, int numofNum) {
-  int k;
-   for(k = numofNum/2; k >= 1; k--) {
-      max_heap(a,k,numofNum);
-   }
-}
 
 // Driver program to test above functions
 int main() {
